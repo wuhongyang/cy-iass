@@ -1,0 +1,232 @@
+<section id="main-content" >
+  <section class="wrapper page page-alarmUserSet-list" data-page="alarmUserSet">
+      <div>
+          <a class="btn-alarm add-user" name="alarm-user-add"data-toggle="modal" data-target="#addModal">增加</a>
+          <br/>
+          <br/>
+          <iframe id="id_iframe" name="id_iframe" style="display:none;"></iframe>
+          <section class="panel">
+              <div class="table-responsive">
+                  <table id="alarmUserSet-list-table" class="table table-bordered datatable" style="border:1px solid #ccc">
+                      <thead >
+                      <tr>
+                          <th>监控人员</th>
+                          <th>邮箱</th>
+                          <th>手机</th>
+                          <th>办公电话</th>
+                          <th>备注</th>
+                          <th>操&nbsp;&nbsp;作</th>
+                      </tr>
+                      </thead>
+                      <tbody id="alarmUserSetTable">
+                      <!--  <tr>
+                         <td>李军</td>
+                         <td>1234@office_phone.com</td>
+                         <td>186*****856</td>
+                         <td>管理员</td>
+                         <td>
+                                <a class="btn mybtn" name="alarm-user-change"data-toggle="modal" data-target="#changeModal">
+                                 修改
+                                </a>
+                                 <a class="btn mybtn" name="alarm-user-delete"data-toggle="modal" data-target="#deleteModal">
+                                 删除
+                                </a>
+                         </td>
+                       </tr>        -->
+                      </tbody>
+                  </table>
+              </div>
+          </section>
+      </div>
+  </section>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="changeModal" tabindex="-1" role="dialog" 
+   aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" 
+               data-dismiss="modal" aria-hidden="true">
+                  &times;
+            </button>
+            <h4 class="modal-title" id="myChangeModalLabel">
+               修改监控人信息
+            </h4>
+         </div>
+         <div class="modal-body" id="change-user">
+            <!--<p><label>监控人员：</label><input type="text" name="alarm_user_name" value=""/></p>-->
+            <!--<p><label>手&nbsp;&nbsp;&nbsp;&nbsp;机：</label><input type="text" class="validate"name="phone"value="" /></p>-->
+            <!--<p><label>办公电话：</label><input type="text" name="office_phone"value=""/></p>-->
+             <!--<p><label>邮&nbsp;&nbsp;&nbsp;&nbsp;箱：</label><input type="text" class="validate"name="email"value=""/></p>-->
+            <!--<p><label>备&nbsp;&nbsp;&nbsp;&nbsp;注：</label><input type="text" name="remark"value=""/></p>-->
+
+             <form id="changeuserForm" class="form-horizontal" role="form" target="id_iframe">
+                 <div class="form-group">
+                     <label for="alarm_user_name" class="col-lg-2 col-sm-2 control-label">监控人员</label>
+                     <div class="col-lg-10">
+                         <input type="text" class="form-control" name="alarm_user_name" value="" />
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label for="phone" class="col-lg-2 col-sm-2 control-label">手&nbsp;&nbsp;&nbsp;&nbsp;机</label>
+                     <div class="col-lg-10">
+                         <input type="text" class="form-control" name="phone" value=""/>
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label for="office_phone" class="col-lg-2 col-sm-2 control-label">办公电话</label>
+                     <div class="col-lg-10">
+                         <input type="text" class="form-control" name="office_phone" value=""/>
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label for="email" class="col-lg-2 col-sm-2 control-label">电子邮件</label>
+                     <div class="col-lg-10">
+                         <input type="text" class="form-control" name="email" value=""/>
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label for="remark" class="col-lg-2 col-sm-2 control-label">备&nbsp;&nbsp;&nbsp;&nbsp;注</label>
+                     <div class="col-lg-10">
+                         <input type="text" class="form-control"  name="remark" value=""/>
+                     </div>
+                 </div>
+                 <div class="modal-footer">
+                     <button type="button" class="btn btn-default"
+                             data-dismiss="modal" id="changeuserdismiss">取消
+                     </button>
+                     <button type="submit" class="btn btn-primary btn-alarm-user-add">
+                         修改
+                     </button>
+                 </div>
+             </form>
+         </div>
+      </div><!-- /.modal-content -->
+</div><!-- /.modal -->
+</div>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="deleteModal" tabindex="-2" role="dialog" 
+   aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" 
+               data-dismiss="modal" aria-hidden="true">
+                  &times;
+            </button>
+             <h4 class="modal-title" id="myDeleteModalLabel">
+               信息删除
+            </h4>
+         </div>
+         <div class="modal-body">
+             <form id="deleteuserForm" class="form-horizontal" role="form">
+                 请确认是否删除该用户
+                 <div class="modal-footer">
+                     <button type="button" class="btn btn-default"
+                             data-dismiss="modal">取消
+                     </button>
+                     <button type="submit" class="btn btn-primary btn-alarm-user-add">
+                         确认
+                     </button>
+                 </div>
+             </form>
+         </div>
+
+      </div><!-- /.modal-content -->
+</div><!-- /.modal -->
+</div>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="addModal" tabindex="-2" role="dialog" 
+   aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog" >
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" 
+               data-dismiss="modal" aria-hidden="true">
+                  &times;
+            </button>
+             <h4 class="modal-title" id="myAddModalLabel">
+               创建监控人员
+            </h4>
+         </div>
+         <div class="modal-body" id="add-user">
+            <!--<p><label>监控人员:</label><input type="text" name="alarm_user_name" placeholder="请输入姓名"/></p>-->
+            <!--<p><label>手&nbsp;&nbsp;&nbsp;&nbsp;机:</label><input type="text" class="validate" name="phone" placeholder="请输入手机号码"/></p>-->
+            <!--<p><label>办公电话:</label><input type="text" name="office_phone" placeholder="请输入办公电话"/></p>-->
+            <!--<p><label>邮&nbsp;&nbsp;&nbsp;&nbsp;箱:</label><input type="text" class="validate" name="email" placeholder="请输入邮箱"/></p>-->
+            <!--<p><label>备&nbsp;&nbsp;&nbsp;&nbsp;注:</label><input type="text" name="remark" placeholder="请输入备注"/></p>-->
+
+             <form id="adduserForm" class="form-horizontal" role="form" method="post" target="id_iframe">
+                 <div class="form-group">
+                     <label for="alarm_user_name" class="col-lg-2 col-sm-2 control-label">监控人员</label>
+                     <div class="col-lg-10">
+                         <input type="text" class="form-control" name="alarm_user_name" id="alarm_user_name" placeholder="请输入姓名" />
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label for="phone" class="col-lg-2 col-sm-2 control-label">手&nbsp;&nbsp;&nbsp;&nbsp;机</label>
+                     <div class="col-lg-10">
+                         <input type="text" class="form-control" name="phone" placeholder="请输入手机号码"/>
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label for="office_phone" class="col-lg-2 col-sm-2 control-label">办公电话</label>
+                     <div class="col-lg-10">
+                         <input type="text" class="form-control" name="office_phone" placeholder="请输入办公电话"/>
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label for="email" class="col-lg-2 col-sm-2 control-label">电子邮件</label>
+                     <div class="col-lg-10">
+                         <input type="text" class="form-control" name="email" placeholder="请输入邮箱"/>
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label for="remark" class="col-lg-2 col-sm-2 control-label">备&nbsp;&nbsp;&nbsp;&nbsp;注</label>
+                     <div class="col-lg-10">
+                         <input type="text" class="form-control"  name="remark" placeholder="请输入备注"/>
+                     </div>
+                 </div>
+                 <div class="modal-footer">
+                     <button type="button" class="btn btn-default"
+                             data-dismiss="modal" id="adduserdismiss">取消
+                     </button>
+                     <button type="submit" class="btn btn-primary btn-alarm-user-add">
+                         创建
+                     </button>
+                 </div>
+             </form>
+         </div>
+
+      </div><!-- /.modal-content -->
+</div><!-- /.modal -->
+</div>
+  <script id="alarmUserSetListTemplate" type="text/template">
+    {{#users}}
+          <tr name="{{pk}}" class="user{{pk}}">
+            <td>{{alarm_user_name}}</td>
+            <td>{{email}}</td>
+            <td>{{phone}}</td>
+            <td>{{office_phone}}</td>
+            <td>{{remark}}</td>
+            <td>
+                   <a class="btn mybtn" name="alarm-user-change"data-toggle="modal" data-target="#changeModal">
+                    修改
+                   </a>
+                    <a class="btn mybtn" name="alarm-user-delete" data-toggle="modal" data-target="#deleteModal">
+                    删除
+                   </a>
+            </td>
+          </tr>        
+    {{/users}}
+  </script>
+  <script id="alarmUserChangeTemplate" type="text/template">
+    {{#user}}
+        <p><label>监控人员：</label><input type="text" name="alarm_user_name" value="{{alarm_user_name}}"/></p>
+        <p><label>手&nbsp;&nbsp;&nbsp;&nbsp;机：</label><input type="text" name="phone"value="{{phone}}"/></p>
+        <p><label>邮&nbsp;&nbsp;&nbsp;&nbsp;箱：</label><input type="text" name="email"value="{{email}}"/></p>
+        <p><label>办公电话：</label><input type="text" name="office_phone"value="{{office_phone}}"/></p>
+        <p><label>备&nbsp;&nbsp;&nbsp;&nbsp;注：</label><input type="text" name="remark"value="{{remark}}"/></p>
+    {{/user}}
+  </script>
+</section>

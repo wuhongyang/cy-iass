@@ -1,0 +1,84 @@
+<section id="main-content" >
+  <section class="wrapper page page-depart-list" data-page="departList">
+    <div class="row">
+      <div id="depart-list" class="col-md-9">
+        <section class="panel">
+          <!-- <header class="panel-heading">
+              Responsive table
+          </header> -->
+          <div class="panel-body">
+            <div class="table-responsive">
+              <div class="dataTables_length" id="alarm-list-table_length">
+                      <label>每页显示 
+                          <select  id="perNumber" name="alarm-list-table_length" aria-controls="alarm-list-table" class="">
+                               <option value="10">10</option>
+                               <option value="25">20</option>
+                               <option value="50">50</option>
+                               <option value="100">100</option>
+                             </select> 条记录
+                         </label>
+                  </div>
+              <table id="depart-list-table" class="table table-bordered table-hover datatable">
+                <thead >
+                <tr>
+                  <th>部门列表</th>
+                  <th class="numeric">用户数</th>
+                  <th class="numeric">工单数</th>
+                  <th class="numeric">当月主机数</th>
+                  <th class="numeric">当季主机数</th>
+                  <th class="numeric">当年主机数</th>
+                  <th class="numeric">总计主机数</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>-</td>
+                  <td class="numeric">-</td>
+                  <td class="numeric">-</td>
+                  <td class="numeric">-</td>
+                  <td class="numeric">-</td>
+                  <td class="numeric">-</td>
+                  <td class="numeric">-</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="col-md-3 charts">
+        <section class="panel">
+          <div class="chart" id="depart-user_count"></div>
+          <h6>用户数</h6>
+          <br>
+        </section>
+        <section class="panel">
+          <div class="chart" id="depart-total_count"></div>
+          <h6>云主机创建数</h6>
+          <br>
+        </section>
+        <section class="panel">
+          <div class="chart" id="depart-ticket_count"></div>
+          <h6>工单数</h6>
+          <br>
+        </section>
+        <!-- <div class="chart" id="user-average-CPU-chart"></div>
+              <h6>虚拟主机创建数</h6> -->
+      </div>
+    </div>
+  </section>
+  <script id="departListTemplate" type="text/template">
+    {{#list}}
+    <tr style="cursor:pointer;" data-id="{{org_id}}">
+      <td>{{org_name}}</td>
+      <td class="numeric">{{user_count}}</td>
+      <td class="numeric">{{ticket_count}}</td>
+      <td class="numeric">{{month_count}}</td>
+      <td class="numeric">{{quarter_count}}</td>
+      <td class="numeric">{{year_count}}</td>
+      <td class="numeric">{{total_count}}</td>
+    </tr>
+    {{/list}}
+  </script>
+</section>

@@ -1,0 +1,40 @@
+<section id="main-content" >
+  <section class="wrapper page page-host-list" data-page="hostList">
+    <div class="row">
+      <div class="col-md-8" id="host-list">
+      </div>
+      <div class="col-md-4 charts">
+          <section class="panel">
+              <div class="chart" id="host-vms"></div>
+              <h6>虚拟主机创建数</h6>
+              <br>
+          </section>
+      </div>
+    </div>
+  </section>
+  <script id="hostListTemplate" type="text/template">
+  {{#hosts}}
+         <article class="panel">
+             <div class="panel-body">
+                 <a class="pull-left host-name">
+                     <img src="img/product1.jpg" alt="">
+                 </a>
+                 <a href="host.html?ip={{host_ip}}" data-pjax="1">
+                     <div class="host-info">
+                         <div class="row">
+                             <div class="col-md-5"><span class="label">服务器名 :</span>{{host_name}}</div>
+                             <div class="col-md-3"><span class="label">云主机数 :</span>{{vms}}</div>
+                             <div class="col-md-3"><span class="label">虚拟化平台 :</span>CCI CLOUD</div>
+                         </div>
+                         <div class="row">
+                             <div class="col-md-5"><span class="label">CPU :</span>{{cpu_spec}}</div>
+                             <div class="col-md-3"><span class="label">内存 :</span>{{memory_mb}}GB</div>
+                             <div class="col-md-3"><span class="label">硬盘 :</span>{{storage_gb}}GB</div>
+                         </div>
+                     </div>
+                 </a>
+             </div>
+          </article>
+    {{/hosts}}
+  </script>
+</section>   

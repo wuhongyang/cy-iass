@@ -1,0 +1,514 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/messenger/build/css/messenger.css" />
+    <link rel="stylesheet" href="bower_components/messenger/build/css/messenger-theme-future.css" />
+    <link rel="stylesheet" href="bower_components/messenger/build/css/messenger-theme-flat.css" />
+    <link rel="stylesheet" href="bower_components/messenger/build/css/messenger-theme-block.css" />
+    <link rel="stylesheet" href="bower_components/messenger/build/css/messenger-theme-air.css" />
+    <link rel="stylesheet" href="bower_components/messenger/build/css/messenger-theme-ice.css" />
+    <link rel="stylesheet" href="bower_components/bootstrapValidator/dist/css/bootstrapValidator.css" />
+    <!-- endbower -->
+    <!--external css-->
+    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    
+    <!-- Custom styles for this template -->
+    <link href="css/bootstrap-reset.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet" />
+    <link href="css/datatable.css" rel="stylesheet" />
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="/styles/main.css">
+    <!-- endbuild -->
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <section id="container">
+    <script id="hostSubMenuTemplate" type="text/template">
+        {{#hosts}}
+            <li>
+                <a  href="host.html?ip={{host_ip}}">{{host_name}}</a>
+              </li>
+        {{/hosts}}
+    </script>
+    <script id="VmHostSubMenuTemplate" type="text/template">
+        {{#hosts}}
+        <li>
+            <a  href="vmHost.html?ip={{host_ip}}">{{host_name}}</a>
+        </li>
+        {{/hosts}}
+    </script>
+    <script id="userSubMenuTemplate" type="text/template">
+        {{#users}}
+            <li>
+                <a  href="user.html?id={{username}}">{{username}}</a>
+              </li>
+        {{/users}}
+    </script>
+    <script id="departSubMenuTemplate" type="text/template">
+        {{#departs}}
+            <li>
+                <a  href="userList.html?id={{org_id}}">{{org_name}}</a>
+            </li>
+        {{/departs}}
+    </script>
+    <!-- header start -->
+      <header class="header white-bg row">
+        <div class="sidebar-toggle-box col-md-2">
+          <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="right" ></div>
+          <div class="nav notify-row" id="top_menu">
+                <!--  notification start -->
+
+                <!--  notification end -->
+            </div>
+        </div>
+        <div class="title col-md-8">
+            <h2>广东电科院云监控平台</h2>
+        </div>
+      </header>
+      <!-- header end -->
+            <!--sidebar start-->
+            <aside>
+              <div id="sidebar"  class="nav-collapse ">
+                <!-- sidebar menu start-->
+                <ul class="sidebar-menu" id="nav-accordion">
+                  <li>
+                    <a class="active" href="index.html"> <i class="icon-dashboard"></i>
+                      <span>首页</span>
+                    </a>
+                  </li>
+
+                    <li class="sub-menu">
+                        <a href="departList.html" > <i class="icon-group"></i>
+                            <span>部门</span>
+                        </a>
+                        <ul id="depart-sub-menu" class="sub">
+                        </ul>
+                    </li>
+
+                  <li class="sub-menu">
+                    <a href="hostList.html" >
+                      <i class="icon-book"></i>
+                      <span>主机</span>
+                    </a>
+                    <ul class="sub" id="host-sub">
+                    </ul>
+                  </li>
+
+                    <li>
+                        <a class="active" href="advan.html"> <i class="icon-cloud"></i>
+                            <span>优势</span>
+                        </a>
+                    </li>
+
+                  <li class="sub-menu">
+                    <a href="VmHostList.html" >
+                      <i class="icon-cogs"></i>
+                      <span>VMWARE</span>
+                    </a>
+                      <ul class="sub" id="vmHost-sub">
+                      </ul>
+                  </li>
+
+                  <li class="sub-menu">
+                    <a href="alarm.html" >
+                      <i class="icon-tasks"></i>
+                      <span>报警</span>
+                    </a>
+                    <ul class="sub">
+                      <li>
+                        <a  href="alarmUserSet.html">人员设置</a>
+                      </li>
+                      <li>
+                        <a  href="alarmRule.html">规则设置</a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+                <!-- sidebar menu end-->
+                </div>
+            </aside>
+            <!--sidebar end--><section id="main-content" >
+  <section class="wrapper page page-alarmRule-list" data-page="alarmRule">
+      <div class="col-md-9">
+        <!-- <label>报警过滤</label>
+        <select>
+          <option value="cpu">CPU</option>
+          <option  value="mem">MEM</option>
+        </select> -->    
+        <h3>报警管理</h3>  
+        
+        <section class="panel">
+        <div class="panel-body">   
+            <div class="table-responsive" style="padding:5px"> 
+               <div class="dataTables_length" id="alarm-list-table_length">
+                      <label>每页显示 
+                          <select  id="perNumber" name="alarm-list-table_length" aria-controls="alarm-list-table" class="">
+                               <option value="10">10</option>
+                               <option value="25">20</option>
+                               <option value="50">50</option>
+                               <option value="100">100</option>
+                             </select> 条记录
+                         </label>
+                  </div>
+                  <a class="btn-alarm add-alarm-rule" id="btn-add-alarm-project" data-toggle="modal" data-target="#addRuleModal">增加</a> 
+              <table id="alarmRule-list-table" class="table table-bordered datatable" style="border:1px solid #ccc">
+                <thead >
+                <tr>
+                  <th>报警项目</th>
+                  <th>报警描述</th>
+                  <th>报警时间</th>
+                  <!--<th>报警对象</th>-->
+                  <th>默认报警</th>
+                  <th>操        作</th>
+                </tr>
+                </thead>
+                <tbody id="alarmRuleList">
+                
+                </tbody>
+              </table>
+            </div>
+            </div>
+        </section>
+      </div>
+      <div class="col-md-3">
+                <h3>报警详情</h3>
+                <section class="panel single">                                      
+                      <div class="alarm-rule" id="alarmDetails">
+                         <p><label>项目名称：</label></p>
+                        <p><label>报警描述：</label></p>
+                        <p><label>创建时间：</label></p>
+                        <p><label>报警对象：</label></p>
+                        <p><label>报警次数：</label></p>
+                        <p><label>报警规则：</label></p>
+                      </div>
+                </section>
+              </div>
+  </section>
+     
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="changeRuleModal" tabindex="-1" role="dialog" 
+   aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" 
+               data-dismiss="modal" aria-hidden="true">
+                  &times;
+            </button>
+            <h4 class="modal-title" id="myChangeModalLabel">
+               修改报警组信息
+            </h4>
+         </div>
+         <div class="modal-body" id="change-alarm">
+               <p><label>报警项目：</label><input type="text" class="des no-boder" name="alarm_project_name" readOnly="true" /></p>
+              <p><label>报警规则：</label><a class="btn mybtn btn-add-rule">添加规则</a>
+                <p id="add-alarm-rule"></p>
+                <div>
+                  <table id="alarm_rules" class="alarm-rules-table"></table>
+                </div>
+              </p>
+              <p><label>报警描述：</label><input type="text"  class="des" name="alarm_project_desc"/></p>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-default" 
+               data-dismiss="modal">取消
+            </button>
+            <button type="button" class="btn btn-primary btn-alarm-change" name="change-next">
+               下一步
+            </button>
+         </div>
+      </div><!-- /.modal-content -->
+</div><!-- /.modal -->
+</div>
+<!-- 修改下一步 -->
+<div class="modal fade" id="changeRuleModalNext" tabindex="-1" role="dialog" 
+   aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" 
+               data-dismiss="modal" aria-hidden="true">
+                  &times;
+            </button>
+            <h4 class="modal-title" id="myChangeModalLabel">
+               选择监控对象
+            </h4>
+         </div>
+         <div class="modal-body" id="change-object">
+            <p>
+                    <h3>虚拟机</h3>
+                    <p  id="change-object-not"></p>
+                </p>
+                  <p>
+                    <h3>物理机</h3>
+                     <p id="change-object-is"></p>
+                </p>  
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-default" name="changeRuleModalNext"
+               data-dismiss="modal">上一步
+            </button>
+            <button type="button" class="btn btn-next" name="change-alarm-object">
+               修改
+            </button>
+         </div>
+      </div><!-- /.modal-content -->
+</div><!-- /.modal -->
+</div>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="deleteRuleModal" tabindex="-2" role="dialog" 
+   aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" 
+               data-dismiss="modal" aria-hidden="true">
+                  &times;
+            </button>
+             <h4 class="modal-title" id="myDeleteModalLabel">
+               信息删除
+            </h4>
+         </div>
+         <div class="modal-body">
+            确认删除？
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-default" 
+               data-dismiss="modal">取消
+            </button>
+            <button type="button" class="btn btn-primary btn-alarm-user-delete" name="delete-next">
+               确认
+            </button>
+         </div>
+      </div><!-- /.modal-content -->
+</div><!-- /.modal -->
+</div>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="addRuleModal" tabindex="-3" role="dialog"
+   aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" 
+               data-dismiss="modal" aria-hidden="true">
+                  &times;
+            </button>
+             <h4 class="modal-title" id="myAddModalLabel">
+               创建监控项目
+            </h4>
+         </div>
+         <div class="modal-body" id="add-rule-new">
+             <form id="addruleForm" class="form-horizontal" role="form">
+             <div class="form-group">
+                 <label for="alarm_project_name" class="col-lg-2 col-sm-2 control-label">报警项目</label>
+                 <div class="col-lg-10">
+                     <input type="text" class="form-control des" name="alarm_project_name" placeholder="请输入报警项目名称" />
+                     </div>
+                 </div>
+             <div class="form-group">
+                 <label for="is_auto" class="col-lg-2 col-sm-2 control-label">报警规则</label>
+                 <div class="col-lg-10">
+                     <a class="btn mybtn btn-add-rule-new">添加规则</a>
+                     <p id="add-alarm-rule-new"></p>
+                     </p>
+                     </div>
+                 </div>
+             <div class="form-group">
+                 <label for="is_auto" class="col-lg-2 col-sm-2 control-label">默认设置</label>
+                 <div class="col-lg-10">
+                     <input type="radio" checked="true" name="is_auto" value="1"/>是 &nbsp&nbsp <input type="radio" name="is_auto" value="0"/>否
+                     </div>
+                 </div>
+             <div class="form-group">
+                 <label for="alarm_project_desc" class="col-lg-2 col-sm-2 control-label">报警描述</label>
+                 <div class="col-lg-10">
+                     <input type="text" class="form-control des" name="alarm_project_desc" placeholder="请输入报警项目描述" />
+                     </div>
+                 </div>
+             </form>
+         </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-default"
+                      data-dismiss="modal">取消
+              </button>
+              <button type="submit" class="btn btn-primary btn-alarm-rule-add" name="add-next">
+                  下一步
+              </button>
+          </div>
+      </div><!-- /.modal-content -->
+</div><!-- /.modal -->
+</div>
+<!-- 创建下一步 -->
+<div class="modal fade" id="addRuleModalNext" tabindex="-4" role="dialog"
+   aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" 
+               data-dismiss="modal" aria-hidden="true">
+                  &times;
+            </button>
+            <h4 class="modal-title" id="myAddModalLabel">
+               选择监控对象
+            </h4>
+         </div>
+         <div class="modal-body" id="create-object">
+                <p>
+                    <h3>虚拟机</h3>
+                    <p  id="create-object-not"></p>
+                </p>
+                  <p>
+                    <h3>物理机</h3>
+                     <p id="create-object-is"></p>
+                </p>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-default" name="addRuleModalNext" 
+               data-dismiss="modal">上一步
+            </button>
+            <button type="button" class="btn btn-next" name="create-alarm-object">
+               创建
+            </button>
+         </div>
+      </div><!-- /.modal-content -->
+</div><!-- /.modal -->
+</div>
+  <script id="alarmRuleListTemplate" type="text/template">
+    {{#projects}}
+      <tr id="row{{id}}">
+          <td id="{{id}}"><a  name="check" style="cursor:pointer">{{alarm_project_name}}</a></td>
+          <td>{{alarm_project_desc}}</td>
+          <td>{{update_time}}</td>
+          <!--<td id="{{id}}" class="show-more"style="cursor:pointer"><span class="icon-circle-arrow-down">查看报警对象</span></td>-->
+          <td>
+                {{#auto}}
+                    是                                            
+                {{/auto}}
+                {{^auto}}
+                    否
+                {{/auto}}        
+          </td>
+          <td id="{{id}}">               
+                <a class="btn mybtn" name="btn-rule-change" data-toggle="modal" data-target="#changeRuleModal">修改</a>
+                <a class="btn mybtn" name="btn-rule-delete" data-toggle="modal" data-target="#deleteRuleModal">删除</a>
+          </td>
+        </tr>   
+    {{/projects}}
+  </script>
+  
+ <script id="alarmRuleDetailTemplate" type="text/template">
+    {{#projects}}
+       <p><label>项目名称：</label>{{alarm_project_name}}</p>
+        <p><label>报警描述：</label>{{alarm_project_desc}}</p>
+        <p><label>创建时间：</label>{{update_time}}</p>
+        <p><label>报警对象：</label>
+                <div class="object-details">
+                    {{# objects}}
+                      <p>{{object}}</p>
+                    {{/objects}}
+                </div>
+        </p>
+        <p style="margin-top:-33px"><label>报警规则：</label>
+              <div class="object-details">
+                    {{# alarm_rules}}
+                      <p>当{{metric_desc}}{{comparison_operator}}{{threshold}}{{metric_unit}}时&nbsp;发出{{alarm_frequency}}次{{alarm_level_text}}</p>
+                    {{/alarm_rules}}
+                </div>
+        </p>
+    {{/projects}}
+  </script>
+    <script id="alarmRuleListTdTemplate" type="text/template">
+    {{#projects}}
+          <td id="{{id}}"><a  name="check" style="cursor:pointer">{{alarm_project_name}}</a></td>
+          <td>{{alarm_project_desc}}</td>
+          <td>{{update_time}}</td>
+          <!--<td id="{{id}}"class="show-more"style="cursor:pointer"><span class="icon-circle-arrow-down">查看报警对象</span></td>-->
+          <td>
+                {{#auto}}
+                    是                                            
+                {{/auto}}
+                {{^auto}}
+                    否
+                {{/auto}}        
+          </td>
+          <td id="{{id}}">               
+                <a class="btn mybtn" name="btn-rule-change" data-toggle="modal" data-target="#changeRuleModal">修改</a>
+                <a class="btn mybtn" name="btn-rule-delete" data-toggle="modal" data-target="#deleteRuleModal">删除</a>
+          </td>
+    {{/projects}}
+  </script>
+
+  <script language="javascript"  type="text/javascript">
+      function setValuesInt(obj,starts,ends){
+          var val = obj.value.replace(/[^\d]/g,'');
+          if (!val)
+          {
+              obj.value= ' ';
+              return false;
+          }
+          if (val > ends || val < starts)
+          {
+              alert('该值的范围为'+starts+'~'+ends);
+              obj.value= ' ';
+              return false;
+          }
+          obj.value= parseInt(val);
+      }
+  </script>
+</section>
+
+
+    </section>
+    <!-- build:js(.) scripts/oldieshim.js -->
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.js"></script>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <!-- endbuild -->
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/kapusta-jquery.sparkline/dist/jquery.sparkline.min.js"></script>
+    <script src="bower_components/jquery.scrollTo/jquery.scrollTo.js"></script>
+    <script src="bower_components/jquery.cookie/jquery.cookie.js"></script>
+    <script src="bower_components/dcjqaccordion/js/jquery.dcjqaccordion.2.7.min.js"></script>
+    <script src="bower_components/jquery.customSelect/jquery.customSelect.min.js"></script>
+    <script src="bower_components/jquery-pjax/jquery.pjax.js"></script>
+    <script src="bower_components/jquery-knob/js/jquery.knob.js"></script>
+    <script src="bower_components/messenger/build/js/messenger.js"></script>
+    <script src="bower_components/messenger/build/js/messenger-theme-future.js"></script>
+    <script src="bower_components/messenger/build/js/messenger-theme-flat.js"></script>
+    <script src="bower_components/DataTables/media/js/jquery.dataTables.js"></script>
+    <script src="bower_components/bootstrapValidator/dist/js/bootstrapValidator.js"></script>
+    <!-- endbower -->
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="js/respond.min.js" ></script>
+    <!-- endbuild -->
+
+    <!--(if target dev)><!-->
+    <script data-main="scripts/app" src="bower_components/requirejs/require.js"></script>
+    <!--<!(endif)-->
+    
+    <!--(if target dist)>
+    <script data-main="scripts/app.{{rlsdate}}" src="scripts/require.js"></script>
+    <!(endif)-->
+    
+</body>
+</html>

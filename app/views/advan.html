@@ -1,0 +1,144 @@
+<section id="main-content">
+    <section class="wrapper page page-advan" data-page="advan">
+        <div class="row">
+            <div  class="advantage">
+                <h3>云平台优势</h3>
+            </div>
+            <!--new earning start-->
+            <fieldset class="my-fieldset">
+                <legend>经济</legend>
+            </fieldset>
+            <div class="type-advantage">
+                <div class="col-md-8">
+                    <div class="btn-group  button-next" id="advan-device-btn">
+                        <button class="btn btn-default" data-id="all">全部</button>
+                        <button class="btn btn-default" data-id="year">当年</button>
+                        <button class="btn btn-default" data-id="quarter">当季</button>
+                        <button class="btn btn-default" data-id="month">当月</button>
+                    </div>
+                   
+                    <table class="table table-hover" id="advan-device-table">
+                        <thead>
+                        <tr>
+                            <th>对比项</th>
+                            <th>传统模式</th>
+                            <th>云平台</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="panel terques-chart col-md-4">
+                    <div class="panel-body">
+                        <div class="chart" id="advan-device-chart">
+                        </div>
+                    </div>
+                    <div class="chart-tittle">
+                        <span class="title">设备数合计比较(柱状图)</span>
+                    </div>
+                </div>
+                <br/>
+            </div>
+            <!--new earning end-->
+            <!--total earning start-->
+            <fieldset class="my-fieldset">
+                <legend>效率</legend>
+            </fieldset>
+            <div class="type-advantage">
+                <div class="col-md-8">
+                    <div class="btn-group  button-next" id="advan-efficiency-btn">
+                        <button class="btn btn-default" data-id="all">全部</button>
+                        <button class="btn btn-default" data-id="year">当年</button>
+                        <button class="btn btn-default" data-id="quarter">当季</button>
+                        <button class="btn btn-default" data-id="month">当月</button>
+                    </div>
+                    <table class="table table-hover" id="advan-efficiency-table">
+                        <thead>
+                        <tr>
+                            <th>对比项</th>
+                            <th>传统模式</th>
+                            <th>云平台</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="panel terques-chart col-md-4">
+                    <div class="panel-body">
+                        <div class="chart" id="advan-efficiency-chart">
+                        </div>
+                    </div>
+                    <div class="chart-tittle">
+                        <span class="title">效率合计时间比较(柱状图)</span>
+                    </div>
+                </div>
+                <br/>
+            </div>
+            <!--total earning end-->
+            <!--total earning start-->
+            <fieldset class="my-fieldset">
+                <legend>能耗</legend>
+            </fieldset>
+            <div class="type-advantage">
+                <div class="col-md-8">
+                    <div class="btn-group  button-next" id="advan-energy-btn">
+                        <button class="btn btn-default" data-id="all">全部</button>
+                        <button class="btn btn-default" data-id="year">当年</button>
+                        <button class="btn btn-default" data-id="quarter">当季</button>
+                        <button class="btn btn-default" data-id="month">当月</button>
+                    </div>
+                    <table class="table table-hover" id="advan-energy-table">
+                        <thead>
+                        <tr>
+                            <th>对比项</th>
+                            <th>传统模式</th>
+                            <th>云平台</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="panel terques-chart col-md-4">
+                    <div class="panel-body">
+                        <div class="chart" id="advan-energy-chart">
+                        </div>
+                    </div>
+                    <div class="chart-tittle">
+                        <span class="title">能耗合计对比(柱状图)</span>
+                    </div>
+                </div>
+                <br/>
+            </div>
+        <!--total earning end-->
+        </div>
+    </section>
+
+    <script id="advanListTemplate" type="text/template">
+        {{#advans}}
+        <tr>
+            <td>{{option}}</td>
+            <td class="numeric">{{tradition}}{{unit}}</td>
+            <td class="numeric">{{cloud}}{{unit}}</td>
+        </tr>
+        {{/advans}}
+    </script>
+
+</section>

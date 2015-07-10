@@ -1,0 +1,84 @@
+
+<section id="main-content" >
+	<section class="wrapper page page-instance" data-page="vmInstance">
+		<div class="row">
+			<div class="col-md-9">
+				<div class="row">
+					<div class="btn-group  button-next">
+						<button class="btn btn-default refresh" name="year">一年</button>
+						<button class="btn btn-default refresh" name="mon">一月</button>
+						<button class="btn btn-default refresh" name="week">一周</button>
+						<button class="btn btn-default refresh" name="day">一天</button>
+						<button class="btn btn-default refresh" name="hour">一小时</button>
+					</div>
+				</div>
+				<div class="row charts">
+					<div class="col-md-4">
+						<section class="panel">
+							<div class="chart" id="instance-cpu_usage" name="cpu_usage"></div>
+							<footer class="pie-foot">平均CPU使用率</footer>
+						</section>
+					</div>
+					<div class="col-md-4">
+						<section class="panel">
+							<div class="chart" id="instance-disk_read" name="disk_read"></div>
+							<footer class="pie-foot">平均磁盘读写</footer>
+						</section>
+					</div>
+					<div class="col-md-4">
+						<section class="panel">
+							<div class="chart" id="instance-mem_usage" name="mem_usage"></div>
+							<footer class="pie-foot">平均内存使用率</footer>
+						</section>
+					</div>
+				</div>
+				<div class="row charts">
+					<div class="col-md-4">
+						<section class="panel">
+							<div class="chart" id="instance-disk_total" name="disk_total"></div>
+							<footer class="pie-foot">平均磁盘使用</footer>
+						</section>
+					</div>
+					<div class="col-md-4">
+						<section class="panel">
+							<div class="chart" id="instance-net_bytesRx" name="net_bytesRx"></div>
+							<footer class="pie-foot">平均网络流量</footer>
+						</section>
+					</div>
+					<div class="col-md-4">
+						<section class="panel">
+							<div class="chart" id="instance-mem_active" name="mem_active"></div>
+							<footer class="pie-foot">平均内存活跃</footer>
+						</section>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<!--widget start-->			
+				<section class="instance-info panel">
+					<div class="twt-feed blue-bg">
+						<h1>云主机信息</h1>
+					</div>
+					<div class="twt-category">
+						<div id="instance-info" class="text-list">
+						</div>
+					</div>
+				</section>
+				<!--widget end-->
+			</div>
+		</div>
+	</section>
+
+	<script id="instanceInfoTemplate" type="text/template">
+		{{#instance}}
+		<p><span class="terques">主机名 :</span><small>{{instance_name}}</small></p>
+		<p><span class="terques">CPU :</span><small>{{cpu}}</small></p>
+		<p><span class="terques">内存 :</span><small>{{mem}}</small></p>
+		<p><span class="terques">电源状态 :</span><small>{{power_state}}</small></p>
+		<p><span class="terques">启动时间 :</span><small>{{up_time}}</small></p>
+		<p><span class="terques">UUID :</span><small>{{instanceUuid}}</small></p>
+		<p><span class="terques">操作系统 :</span><small>{{guestFullName}}</small></p>
+		<p><span class="terques">虚拟化 :</span><small>VMWARE</small></p>
+		{{/instance}}
+	</script>
+</section>

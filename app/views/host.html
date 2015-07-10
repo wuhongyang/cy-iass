@@ -1,0 +1,138 @@
+<section id="main-content" >
+    <section class="wrapper page page-host" data-page="host">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="btn-group  button-next">
+                        <button class="btn btn-default refresh" name="year">一年</button>
+                        <button class="btn btn-default refresh" name="mon">一月</button>
+                        <button class="btn btn-default refresh" name="week">一周</button>
+                        <button class="btn btn-default refresh" name="day">一天</button>
+                        <button class="btn btn-default refresh" name="hour">一小时</button>
+                    </div>
+                </div>
+                <div class="row charts">
+                    <div class="col-md-4">
+                        <section class="panel">
+                            <div class="chart" id="host-cpu_usage" name="cpu_usage"></div>
+                            <footer class="pie-foot">平均CPU使用率</footer>
+                        </section>
+                    </div>
+                    <div class="col-md-4">
+                        <section class="panel">
+                            <div class="chart" id="host-load_five" name="load_five"></div>
+                            <footer class="pie-foot">平均负载值</footer>
+                        </section>
+                    </div>
+                    <div class="col-md-4">
+                        <section class="panel">
+                            <div class="chart" id="host-mem_total" name="mem_total"></div>
+                            <footer class="pie-foot">平均内存使用</footer>
+                        </section>
+                    </div>
+                </div>
+                <div class="row charts">
+                    <div class="col-md-4">
+                        <section class="panel">
+                            <div class="chart" id="host-disk_total" name="disk_total"></div>
+                            <footer class="pie-foot">平均磁盘使用</footer>
+                        </section>
+                    </div>
+                    <div class="col-md-4">
+                        <section class="panel">
+                            <div class="chart" id="host-bytes_in" name="bytes_in"></div>
+                            <footer class="pie-foot">平均网络流量</footer>
+                        </section>
+                    </div>
+                    <div class="col-md-4">
+                        <section class="panel">
+                            <div class="chart" id="host-proc_run" name="proc_run"></div>
+                            <footer class="pie-foot">平均活跃进程</footer>
+                        </section>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 ">
+                        <section class="panel">
+                            <!-- <header class="panel-heading">
+                                Responsive table
+                            </header> -->
+                            <div class="panel-body">
+                                <table id="host-instance-list-table" class="table table-bordered table-hover datatable">
+                                    <thead>
+                                    <tr>
+                                        <th>UUID</th>
+                                        <th>云主机名</th>
+                                        <th class="numeric">固定IP</th>
+                                        <th class="numeric">规格</th>
+                                        <th class="numeric">可用域</th>
+                                        <th class="numeric">镜像</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody >
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <!--widget start-->
+                <section class="host-info panel" id="host-info">
+                </section>
+                <!--widget end-->
+                <!--widget start-->
+                <section class="host-info panel">
+                    <div class="panel-body host-quota-chart" id="host-quota">
+                    </div>
+                </section>
+                <!--widget end-->
+            </div>
+        </div>
+    </section>
+
+    <script id="hostInfoTemplate" type="text/template">
+        {{#host}}
+        <div class="twt-feed blue-bg">
+            <h1>{{host_name}}</h1>
+            <a href="#">
+                <img src="img/profile-avatar.jpg" alt=""></a>
+        </div>
+        <div class="twt-category">
+            <fieldset class="my-fieldset">
+                <legend>硬件</legend>
+            </fieldset>
+            <br>
+            <div  class="text-list">
+                <p><span class="terques">CPU :</span><small>{{cpu_spec}}</small></p>
+                <p><span class="terques">内存 :</span><small>{{memory_mb}}GB</small></p>
+                <p><span class="terques">硬盘 :</span><small>{{storage_gb}}GB</small></p>
+                <p><span class="terques">品牌 :</span><small>{{model}}</small></p>
+                <p><span class="terques">购买时间 :</span><small>{{purchase_time}}</small></p>
+                <p><span class="terques">上线时间 :</span><small>{{online_time}}</small></p>
+            </div>
+            <fieldset class="my-fieldset">
+                <legend>软件</legend>
+            </fieldset>
+            <br>
+            <div  class="text-list">
+                <p><span class="terques">操作系统 :</span><small>{{os_name}} {{os_release}}</small></p>
+                <p><span class="terques">启动时间 :</span><small>{{boottime}}</small></p>
+                <p><span class="terques">虚拟化 :</span><small>CCI CLOUD</small></p>
+            </div>
+        {{/host}}
+    </script>
+    <script id="hostInstanceListTemplate" type="text/template">
+        {{#list}}
+        <tr style="cursor:pointer;" data-id="{{fixed_ip}}">
+            <td>{{uuid}}</td>
+            <td>{{instance_name}}</td>
+            <td class="numeric">{{fixed_ip}}</td>
+            <td class="numeric">{{vcpus}}CPUX{{ecus_per_vcpu}}ECUS,内存{{memory_mb}}MB,系统硬盘{{rootfs_gb}}GB,用户硬盘{{storage_gb}}GB</td>
+            <td class="numeric">{{az}}</td>
+            <td class="numeric">{{os_type}}</td>
+        </tr>
+        {{/list}}
+    </script>
+</section>

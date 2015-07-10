@@ -1,0 +1,40 @@
+<section id="main-content" >
+  <section class="wrapper page page-host-list" data-page="VmHostList">
+    <div class="row">
+      <div class="col-md-9" id="host-list">
+          
+      </div>
+      <div class="col-md-3 charts">
+          <section class="panel">
+              <div class="chart" id="host-instances_count"></div>
+              <h6>虚拟主机创建数</h6>
+              <br>
+          </section>
+      </div>
+    </div>
+  </section>
+  <script id="hostListTemplate" type="text/template">
+  {{#hosts}}
+         <article class="panel">
+             <div class="panel-body">
+                 <a class="pull-left host-name">
+                     <img src="img/product1.jpg" alt="">
+                 </a>
+                 <a href="vmHost.html?ip={{host_ip}}" data-pjax="1">
+                     <div class="host-info">
+                         <div class="row">
+                             <div class="col-md-4"><span class="label">服务器名 :</span>{{host_name}}</div>
+                             <div class="col-md-2"><span class="label">云主机数 :</span>{{instances_count}}</div>
+                             <div class="col-md-4"><span class="label">虚拟化平台 :</span>{{licenseProductName}}{{licenseProductVersion}}</div>
+                         </div>
+                         <div class="row">
+                             <div class="col-md-4"><span class="label">CPU :</span>{{cpu}}</div>
+                             <div class="col-md-2"><span class="label">内存 :</span>{{mem}}</div>
+                         </div>
+                     </div>
+                 </a>
+             </div>
+          </article>
+    {{/hosts}}
+  </script>
+</section>   

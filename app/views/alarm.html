@@ -1,0 +1,100 @@
+<section id="main-content" >
+  <section class="wrapper page page-alarm-list" data-page="alarm">
+      <div class="row">
+          <div class="col-md-9">
+              <section class="panel">
+                  <div class="chart">
+                      <div class="panel-body">
+                          <span><a  class="btn-alarm refresh" name="alarm-chart">刷新</a></span>
+                          <div id="alarmStatistics" style="height:200px"></div>
+                      </div>
+                  </div>
+              </section>
+          </div>
+          <div class="col-md-3">
+              <section class="panel single">
+                  <div class="panel-body">
+                      <div><span><a  class="btn-alarm refresh" name="alarm-count">刷新</a></span></div>
+                      <div class="alarm-count" id="alarmCount">
+
+                      </div>
+                  </div>
+              </section>
+          </div>
+      </div>
+      <div>
+          <section class="panel">
+              <div class="panel-body">
+                  <span style="font-size:20px;">报警历史</span>
+                  <span><a  class="btn-alarm refresh" name="alarm-table">刷新</a></span>
+                  <br/>
+                  <div class="table-responsive">
+                      <div class="dataTables_length" id="alarm-list-table_length">
+                          <label>每页显示
+                              <select  id="perNumberAlarms" name="alarm-list-table_length" aria-controls="alarm-list-table" class="">
+                                  <option value="5" selected = "selected">5</option>
+                                  <option value="10">10</option>
+                                  <option value="20">20</option>
+                                  <option value="50">50</option>
+                                  <option value="100">100</option>
+                              </select>
+                              <select  id="AlarmStatus" name="alarm-list-table_type" aria-controls="alarm-list-table" class="">
+                                  <option value="0" selected = "selected">未确认</option>
+                                  <option value="1">已确认</option>
+                                  <option value="2">所有</option>
+                              </select> 条记录
+                          </label>
+                      </div>
+                      <div id="dataTable">
+                          <table id="alarm-list-table" class="table table-bordered datatable" style="border:1px solid #ccc">
+                              <thead >
+                              <tr>
+                                  <th width=15%>时间</th>
+                                  <th width=15%>报警模块</th>
+                                  <th width=15%>报警对象</th>
+                                  <th>报警详细信息</th>
+                                  <th width=10%>操        作</th>
+                              </tr>
+                              </thead>
+                              <tbody id="alarmList">
+
+                              </tbody>
+                          </table>
+                      </div>
+                      <div class="page-count">
+
+                      </div>
+                  </div>
+              </div>
+          </section>
+      </div>
+  </section>
+  <script id="alarmListTemplate" type="text/template">
+    {{#list}}
+          <tr>
+            <td>{{alarm_time}}</td>
+            <td>{{metric_desc}}</td>
+            <td>{{fixed_ip}}</td>
+            <td>{{alarm_content_summary}}</td>
+            <td  name="{{id}}">
+                      {{#verify}}
+                          <span class="green">已确认</span>                                            
+                      {{/verify}}
+                      {{^verify}}
+                           <span><button class="btn mybtn red">确认</button></span> 
+                      {{/verify}}                 
+            </td>
+          </tr>
+    {{/list}}
+  </script>
+  <script id="alarmCountTemplate" type="text/template">
+    {{#count}}
+         <p><label>历&nbsp;史&nbsp;&nbsp;次&nbsp;数</label>：{{history_count}}</p>
+          <p><label>报&nbsp;警&nbsp;&nbsp;项&nbsp;目</label>：{{project_count}}</p>
+          <p><label>报&nbsp;警&nbsp;&nbsp;人&nbsp;员</label>：{{user_count}}</p>
+         <p><label>所有报警对象</label>：{{obj_total_count}}</p>
+         <p><label>监控报警对象</label>：{{obj_bonded_count}}</p>
+    {{/count}}
+  </script>
+   
+</section>

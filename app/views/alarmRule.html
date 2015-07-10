@@ -1,0 +1,331 @@
+<section id="main-content" >
+  <section class="wrapper page page-alarmRule-list" data-page="alarmRule">
+      <div class="col-md-9">
+        <!-- <label>报警过滤</label>
+        <select>
+          <option value="cpu">CPU</option>
+          <option  value="mem">MEM</option>
+        </select> -->    
+        <h3>报警管理</h3>  
+        
+        <section class="panel">
+        <div class="panel-body">   
+            <div class="table-responsive" style="padding:5px"> 
+               <div class="dataTables_length" id="alarm-list-table_length">
+                      <label>每页显示 
+                          <select  id="perNumber" name="alarm-list-table_length" aria-controls="alarm-list-table" class="">
+                               <option value="10">10</option>
+                               <option value="25">20</option>
+                               <option value="50">50</option>
+                               <option value="100">100</option>
+                             </select> 条记录
+                         </label>
+                  </div>
+                  <a class="btn-alarm add-alarm-rule" id="btn-add-alarm-project" data-toggle="modal" data-target="#addRuleModal">增加</a> 
+              <table id="alarmRule-list-table" class="table table-bordered datatable" style="border:1px solid #ccc">
+                <thead >
+                <tr>
+                  <th>报警项目</th>
+                  <th>报警描述</th>
+                  <th>报警时间</th>
+                  <!--<th>报警对象</th>-->
+                  <th>默认报警</th>
+                  <th>操        作</th>
+                </tr>
+                </thead>
+                <tbody id="alarmRuleList">
+                
+                </tbody>
+              </table>
+            </div>
+            </div>
+        </section>
+      </div>
+      <div class="col-md-3">
+                <h3>报警详情</h3>
+                <section class="panel single">                                      
+                      <div class="alarm-rule" id="alarmDetails">
+                         <p><label>项目名称：</label></p>
+                        <p><label>报警描述：</label></p>
+                        <p><label>创建时间：</label></p>
+                        <p><label>报警对象：</label></p>
+                        <p><label>报警次数：</label></p>
+                        <p><label>报警规则：</label></p>
+                      </div>
+                </section>
+              </div>
+  </section>
+     
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="changeRuleModal" tabindex="-1" role="dialog" 
+   aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" 
+               data-dismiss="modal" aria-hidden="true">
+                  &times;
+            </button>
+            <h4 class="modal-title" id="myChangeModalLabel">
+               修改报警组信息
+            </h4>
+         </div>
+         <div class="modal-body" id="change-alarm">
+               <p><label>报警项目：</label><input type="text" class="des no-boder" name="alarm_project_name" readOnly="true" /></p>
+              <p><label>报警规则：</label><a class="btn mybtn btn-add-rule">添加规则</a>
+                <p id="add-alarm-rule"></p>
+                <div>
+                  <table id="alarm_rules" class="alarm-rules-table"></table>
+                </div>
+              </p>
+              <p><label>报警描述：</label><input type="text"  class="des" name="alarm_project_desc"/></p>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-default" 
+               data-dismiss="modal">取消
+            </button>
+            <button type="button" class="btn btn-primary btn-alarm-change" name="change-next">
+               下一步
+            </button>
+         </div>
+      </div><!-- /.modal-content -->
+</div><!-- /.modal -->
+</div>
+<!-- 修改下一步 -->
+<div class="modal fade" id="changeRuleModalNext" tabindex="-1" role="dialog" 
+   aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" 
+               data-dismiss="modal" aria-hidden="true">
+                  &times;
+            </button>
+            <h4 class="modal-title" id="myChangeModalLabel">
+               选择监控对象
+            </h4>
+         </div>
+         <div class="modal-body" id="change-object">
+            <p>
+                    <h3>虚拟机</h3>
+                    <p  id="change-object-not"></p>
+                </p>
+                  <p>
+                    <h3>物理机</h3>
+                     <p id="change-object-is"></p>
+                </p>  
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-default" name="changeRuleModalNext"
+               data-dismiss="modal">上一步
+            </button>
+            <button type="button" class="btn btn-next" name="change-alarm-object">
+               修改
+            </button>
+         </div>
+      </div><!-- /.modal-content -->
+</div><!-- /.modal -->
+</div>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="deleteRuleModal" tabindex="-2" role="dialog" 
+   aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" 
+               data-dismiss="modal" aria-hidden="true">
+                  &times;
+            </button>
+             <h4 class="modal-title" id="myDeleteModalLabel">
+               信息删除
+            </h4>
+         </div>
+         <div class="modal-body">
+            确认删除？
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-default" 
+               data-dismiss="modal">取消
+            </button>
+            <button type="button" class="btn btn-primary btn-alarm-user-delete" name="delete-next">
+               确认
+            </button>
+         </div>
+      </div><!-- /.modal-content -->
+</div><!-- /.modal -->
+</div>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="addRuleModal" tabindex="-3" role="dialog"
+   aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" 
+               data-dismiss="modal" aria-hidden="true">
+                  &times;
+            </button>
+             <h4 class="modal-title" id="myAddModalLabel">
+               创建监控项目
+            </h4>
+         </div>
+         <div class="modal-body" id="add-rule-new">
+             <form id="addruleForm" class="form-horizontal" role="form">
+             <div class="form-group">
+                 <label for="alarm_project_name" class="col-lg-2 col-sm-2 control-label">报警项目</label>
+                 <div class="col-lg-10">
+                     <input type="text" class="form-control des" name="alarm_project_name" placeholder="请输入报警项目名称" />
+                     </div>
+                 </div>
+             <div class="form-group">
+                 <label for="is_auto" class="col-lg-2 col-sm-2 control-label">报警规则</label>
+                 <div class="col-lg-10">
+                     <a class="btn mybtn btn-add-rule-new">添加规则</a>
+                     <p id="add-alarm-rule-new"></p>
+                     </p>
+                     </div>
+                 </div>
+             <div class="form-group">
+                 <label for="is_auto" class="col-lg-2 col-sm-2 control-label">默认设置</label>
+                 <div class="col-lg-10">
+                     <input type="radio" checked="true" name="is_auto" value="1"/>是 &nbsp&nbsp <input type="radio" name="is_auto" value="0"/>否
+                     </div>
+                 </div>
+             <div class="form-group">
+                 <label for="alarm_project_desc" class="col-lg-2 col-sm-2 control-label">报警描述</label>
+                 <div class="col-lg-10">
+                     <input type="text" class="form-control des" name="alarm_project_desc" placeholder="请输入报警项目描述" />
+                     </div>
+                 </div>
+             </form>
+         </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-default"
+                      data-dismiss="modal">取消
+              </button>
+              <button type="submit" class="btn btn-primary btn-alarm-rule-add" name="add-next">
+                  下一步
+              </button>
+          </div>
+      </div><!-- /.modal-content -->
+</div><!-- /.modal -->
+</div>
+<!-- 创建下一步 -->
+<div class="modal fade" id="addRuleModalNext" tabindex="-4" role="dialog"
+   aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" 
+               data-dismiss="modal" aria-hidden="true">
+                  &times;
+            </button>
+            <h4 class="modal-title" id="myAddModalLabel">
+               选择监控对象
+            </h4>
+         </div>
+         <div class="modal-body" id="create-object">
+                <p>
+                    <h3>虚拟机</h3>
+                    <p  id="create-object-not"></p>
+                </p>
+                  <p>
+                    <h3>物理机</h3>
+                     <p id="create-object-is"></p>
+                </p>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-default" name="addRuleModalNext" 
+               data-dismiss="modal">上一步
+            </button>
+            <button type="button" class="btn btn-next" name="create-alarm-object">
+               创建
+            </button>
+         </div>
+      </div><!-- /.modal-content -->
+</div><!-- /.modal -->
+</div>
+  <script id="alarmRuleListTemplate" type="text/template">
+    {{#projects}}
+      <tr id="row{{id}}">
+          <td id="{{id}}"><a  name="check" style="cursor:pointer">{{alarm_project_name}}</a></td>
+          <td>{{alarm_project_desc}}</td>
+          <td>{{update_time}}</td>
+          <!--<td id="{{id}}" class="show-more"style="cursor:pointer"><span class="icon-circle-arrow-down">查看报警对象</span></td>-->
+          <td>
+                {{#auto}}
+                    是                                            
+                {{/auto}}
+                {{^auto}}
+                    否
+                {{/auto}}        
+          </td>
+          <td id="{{id}}">               
+                <a class="btn mybtn" name="btn-rule-change" data-toggle="modal" data-target="#changeRuleModal">修改</a>
+                <a class="btn mybtn" name="btn-rule-delete" data-toggle="modal" data-target="#deleteRuleModal">删除</a>
+          </td>
+        </tr>   
+    {{/projects}}
+  </script>
+  
+ <script id="alarmRuleDetailTemplate" type="text/template">
+    {{#projects}}
+       <p><label>项目名称：</label>{{alarm_project_name}}</p>
+        <p><label>报警描述：</label>{{alarm_project_desc}}</p>
+        <p><label>创建时间：</label>{{update_time}}</p>
+        <p><label>报警对象：</label>
+                <div class="object-details">
+                    {{# objects}}
+                      <p>{{object}}</p>
+                    {{/objects}}
+                </div>
+        </p>
+        <p style="margin-top:-33px"><label>报警规则：</label>
+              <div class="object-details">
+                    {{# alarm_rules}}
+                      <p>当{{metric_desc}}{{comparison_operator}}{{threshold}}{{metric_unit}}时&nbsp;发出{{alarm_frequency}}次{{alarm_level_text}}</p>
+                    {{/alarm_rules}}
+                </div>
+        </p>
+    {{/projects}}
+  </script>
+    <script id="alarmRuleListTdTemplate" type="text/template">
+    {{#projects}}
+          <td id="{{id}}"><a  name="check" style="cursor:pointer">{{alarm_project_name}}</a></td>
+          <td>{{alarm_project_desc}}</td>
+          <td>{{update_time}}</td>
+          <!--<td id="{{id}}"class="show-more"style="cursor:pointer"><span class="icon-circle-arrow-down">查看报警对象</span></td>-->
+          <td>
+                {{#auto}}
+                    是                                            
+                {{/auto}}
+                {{^auto}}
+                    否
+                {{/auto}}        
+          </td>
+          <td id="{{id}}">               
+                <a class="btn mybtn" name="btn-rule-change" data-toggle="modal" data-target="#changeRuleModal">修改</a>
+                <a class="btn mybtn" name="btn-rule-delete" data-toggle="modal" data-target="#deleteRuleModal">删除</a>
+          </td>
+    {{/projects}}
+  </script>
+
+  <script language="javascript"  type="text/javascript">
+      function setValuesInt(obj,starts,ends){
+          var val = obj.value.replace(/[^\d]/g,'');
+          if (!val)
+          {
+              obj.value= ' ';
+              return false;
+          }
+          if (val > ends || val < starts)
+          {
+              alert('该值的范围为'+starts+'~'+ends);
+              obj.value= ' ';
+              return false;
+          }
+          obj.value= parseInt(val);
+      }
+  </script>
+</section>
+
+

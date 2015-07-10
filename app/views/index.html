@@ -1,0 +1,194 @@
+<section id="main-content">
+    <section class="wrapper page page-main" data-page="main">
+        <div class="row">
+            <div class="col-lg-5">
+                <!--state overview start-->
+                <div class="row state-overview">
+                    <div class="col-lg-6 col-sm-6">
+                        <section class="panel">
+                            <div class="blue">
+                                <i class="icon-cloud"></i>
+                                <p>虚拟机 <span class="count"  id="instance_count">0</span> 台</p>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-lg-6 col-sm-6">
+                        <section class="panel">
+                            <div class="red"> <i class="icon-desktop"></i>
+                                <p>物理机 <span class="count" id="host_count">0</span> 台</p>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-lg-6 col-sm-6">
+                        <section class="panel">
+                            <div class="yellow">
+                                <i class="icon-group"></i>
+                                <p>部门 <span class="count" id="depart_count">0</span> 个</p>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-lg-6 col-sm-6">
+                        <section class="panel">
+                            <div class="blue">
+                                <i class="icon-user"></i>
+                                <p>用户 <span class="count" id="user_count">0</span> 个</p>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+                <div class="border-head">
+                    <h3></h3>
+                </div>
+                <div class="row restable">
+                    <div class="col-lg-6">
+                        <article class="panel" id="PhysicalMachineList">
+                        </article>
+                    </div>
+
+                    <div class="col-lg-6">
+                         <article class="panel" id="StorageList">
+                        </article>
+
+                        <article class="panel" id="NetworkList">
+                        </article>
+                    </div>
+                </div>
+                <!--state overview end-->
+            </div>
+            <div class="col-lg-7">
+                <!--custom chart start-->
+                <div class="border-head row">
+                    <h3>资源使用</h3>
+                    <div class="btn-group  button-next">
+                        <button class="btn btn-default refresh" name="year">一年</button>
+                        <button class="btn btn-default refresh" name="mon">一月</button>
+                        <button class="btn btn-default refresh" name="week">一周</button>
+                        <button class="btn btn-default refresh" name="day">一天</button>
+                        <button class="btn btn-default refresh" name="hour">一小时</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <section class="panel">
+                            <div class="metric" id="cpu_usage" name="cpu_usage" e-type="Echart" style="height:200px"></div>
+                            <footer class="pie-foot" >平均CPU使用率</footer>
+                        </section>
+                    </div>
+                    <div class="col-md-4">
+                        <section class="panel">
+                            <div class="metric" id="load_five" name="load_five" e-type="Echart" style="height:200px" ></div>
+                            <footer class="pie-foot">平均负载值</footer>
+                        </section>
+                    </div>
+                    <div class="col-md-4">
+                        <section class="panel">
+                                    <div class="metric" id="mem_total" name="mem_total" e-type="Echart" style="height:200px" ></div>
+                            <footer class="pie-foot">平均内存使用</footer>
+                        </section>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <section class="panel">
+                                    <div class="metric" id="disk_total" name="disk_total" e-type="Echart" style="height:200px"></div>
+                            <footer class="pie-foot">平均磁盘使用</footer>
+                        </section>
+                    </div>
+                    <div class="col-md-4">
+                        <section class="panel">
+                                    <div class="metric" id="reads" name="reads" e-type="Echart" style="height:200px"></div>
+                            <footer class="pie-foot">平均磁盘读写</footer>
+                        </section>
+                    </div>
+                    <div class="col-md-4">
+                        <section class="panel">
+                            <div class="metric" id="proc_run" name="proc_run" e-type="Echart" style="height:200px"></div>
+                            <footer class="pie-foot">平均活跃进程</footer>
+                        </section>
+                    </div>
+                </div>
+                <div class="row">
+                    <section class="panel">
+                        <div class="metric" name="bytes_in" id="bytes_in"  e-type="Echart" style="height:200px"></div>
+                        <footer class="pie-foot" >核心链路流量</footer>
+                    </section>
+                </div>
+                <!--custom chart end-->
+            </div>
+        </div>
+    </section>
+
+    <script id="PhysicalMachineTemplate" type="text/template">
+        <div class="panel-head">
+            <h4>服务器</h4>
+        </div>
+        {{#pms}}
+        <div class="panel-body">
+            <div class="col-lg-2"><i class="icon-desktop"></i></div>
+            <a href="host.html?ip={{host_ip}}" data-pjax="1">
+            <div class="col-lg-10">
+                <div class="row">
+                    <div class="col-lg-6"><span class="label">编号 :</span>{{name}}</div>
+                    <div class="col-lg-6"><span class="label">品牌 :</span>{{model}}</div>
+                </div>
+                <div class="row">
+                    <div><span class="label">规格配置 :</span>{{detail}}</div>
+                </div>
+                <div class="row">
+                    <div><span class="label">采购时间 :</span>{{purchase_time}}</div>
+                </div>
+            </div>
+            </a>
+        </div>
+        {{/pms}}
+    </script>
+
+    <script id="StorageTemplate" type="text/template">
+        <div class="panel-head">
+            <h4>存储设备</h4>
+        </div>
+        {{#stos}}
+        <div class="panel-body">
+            <div class="col-lg-2"><i class="icon-signal"></i></div>
+            <div class="col-lg-10">
+                <div class="row">
+                    <div class="col-lg-6"><span class="label">编号 :</span>{{name}}</div>
+                    <div class="col-lg-6"><span class="label">品牌 :</span>{{model}}</div>
+                </div>
+                <div class="row">
+                    <div><span class="label">规格配置 :</span>{{detail}}</div>
+                </div>
+                <div class="row">
+                    <div><span class="label">采购时间 :</span>{{purchase_time}}</div>
+                </div>
+            </div>
+        </div>
+        {{/stos}}
+    </script>
+
+    <script id="NetworkTemplate" type="text/template">
+        <div class="panel-head">
+            <h4>网络设备</h4>
+        </div>
+        {{#nets}}
+        <div class="panel-body">
+            <div class="col-lg-2"><i class="icon-hdd"></i></div>
+            <div class="col-lg-10">
+                <div class="row">
+                    <div class="col-lg-6"><span class="label">编号 :</span>{{name}}</div>
+                    <div class="col-lg-6"><span class="label">品牌 :</span>{{model}}</div>
+                </div>
+                <div class="row">
+                    <div><span class="label">规格配置 :</span>{{detail}}</div>
+                </div>
+                <div class="row">
+                    <div><span class="label">采购时间 :</span>{{purchase_time}}</div>
+                </div>
+            </div>
+        </div>
+        {{/nets}}
+    </script>
+
+
+</section>

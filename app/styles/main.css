@@ -1,0 +1,300 @@
+.table > thead > tr > th,
+.table > thead:first-child > tr:first-child > th {
+  border: 1px solid #ddd;
+}
+.header .title {
+  text-align: center;
+}
+.header .notify-row {
+  float: none;
+  margin-top: -25px;
+  margin-left: 42px;
+}
+.state-overview .panel {
+  border: none;
+}
+.state-overview .panel > div {
+  color: #fff;
+  text-align: center;
+  height: 100%;
+  border-radius: 3px;
+  padding-top: 10px;
+}
+.state-overview .panel > div > i {
+  font-size: 2.5em;
+}
+.state-overview .panel > div > p {
+  margin-top: 5px;
+}
+.chart.chart-hdd {
+  border: 1px solid #E6E6E6;
+  border-top: none;
+  border-right: none;
+}
+.page-main .charts {
+  text-align: center;
+}
+.page-main .charts .chart {
+  width: 100%;
+  height: 200px;
+}
+.page-main .restable h4 {
+  margin: 0;
+  padding-top: 1em;
+  padding-left: .5em;
+}
+.page-main .restable .panel-body {
+  height: inherit;
+  border-bottom: 1px solid #E4E4E4;
+}
+.page-main .restable .panel-body:last-child {
+  border: none;
+}
+.page-main .restable .label {
+  color: #4cc5cd;
+  font-size: 1em;
+  text-align: right;
+  min-width: 80px;
+  line-height: 2em;
+}
+.page-main .restable .col-lg-2 {
+  padding-top: 35px;
+  padding-left: 5px;
+}
+.page-main .restable i {
+  font-size: 2.5em;
+}
+.page-user .charts .chart {
+  width: 100%;
+  height: 200px;
+}
+.page-user .user-info .text-list {
+  padding: 0 1em;
+}
+.page-user .user-info .text-list .terques {
+  display: inline-block;
+  width: 5em;
+  text-align: left;
+  margin-right: 1em;
+}
+.page-user .panel-body {
+  height: inherit;
+}
+.page-user .quota-body .row {
+  padding-top: .5em;
+  padding-bottom: .5em;
+}
+.page-user .terques {
+  text-align: center;
+  color: #4CC5CD;
+}
+.page-user .quota,
+.page-user h6 {
+  text-align: center;
+}
+.page-user .pie-foot {
+  padding: 2px;
+  border-radius: 0 0 4px 4px;
+  -webkit-border-radius: 0 0 4px 4px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 300;
+  height: 25px;
+}
+.page-host .charts .chart {
+  width: 100%;
+  height: 200px;
+}
+.page-host .host-info .text-list {
+  padding: 0 0em;
+}
+.page-host .host-info .text-list .terques {
+  display: inline-block;
+  width: 6em;
+  text-align: left;
+  margin-right: 0em;
+}
+.page-host .host-info .host-quota-chart {
+  width: 100%;
+  height: 350px;
+}
+.page-host .panel-body {
+  height: inherit;
+}
+.page-host .quota-body .row {
+  padding-top: .5em;
+  padding-bottom: .5em;
+}
+.page-host .terques {
+  text-align: center;
+  color: #4CC5CD;
+}
+.page-host .quota,
+.page-host h6 {
+  text-align: center;
+}
+.page-host .pie-foot {
+  padding: 2px;
+  border-radius: 0 0 4px 4px;
+  -webkit-border-radius: 0 0 4px 4px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 300;
+  height: 25px;
+}
+.page-user-list .user-name img {
+  height: 80px;
+  width: 80px;
+}
+.page-user-list .user-info {
+  margin-left: 100px;
+  margin-right: 2em;
+}
+.page-user-list .user-info .row {
+  height: 40px;
+  line-height: 40px;
+}
+.page-user-list .user-info .label {
+  color: #4CC5CD;
+  font-size: 14px;
+}
+.page-user-list .charts {
+  text-align: center;
+}
+.page-user-list .charts .chart {
+  margin-left: 10px;
+  width: 100%;
+  height: 250px;
+}
+.page-user-list .charts h6 {
+  color: #4CC5CD;
+}
+.page-user-list .panel-body {
+  height: inherit;
+  padding: 10px;
+}
+.page-user-list .table {
+  border-spacing: 10px 10px;
+  border-top: medium none;
+}
+.page-user-list .table thead {
+  font-size: 18px;
+}
+.page-user-list .table tbody {
+  font-size: 16px;
+}
+.page-host-list .host-name {
+  margin-left: 10px;
+}
+.page-host-list .host-name img {
+  height: 100px;
+  width: 100px;
+}
+.page-host-list .host-info {
+  margin-left: 100px;
+  margin-right: 2em;
+}
+.page-host-list .host-info .row {
+  height: 40px;
+  line-height: 40px;
+}
+.page-host-list .host-info .label {
+  color: #4CC5CD;
+  font-size: 14px;
+}
+.page-host-list .charts {
+  text-align: center;
+}
+.page-host-list .charts .chart {
+  margin-left: 10px;
+  width: 100%;
+  height: 250px;
+}
+.page-host-list .charts h6 {
+  color: #4CC5CD;
+}
+.page-host-list .panel-body {
+  height: inherit;
+  padding: 10px;
+}
+.page-host-list .table {
+  border-spacing: 10px 10px;
+  border-top: medium none;
+}
+.page-host-list .table thead {
+  font-size: 18px;
+}
+.page-host-list .table tbody {
+  font-size: 16px;
+}
+.page-advan .my-fieldset legend {
+  padding-left: 1em;
+  padding-right: 0.5em;
+}
+.page-advan .btn-default {
+  border-color: #E2E2E2;
+}
+.page-advan .panel-body {
+  height: inherit;
+}
+.page-advan .chart {
+  width: 100%;
+  height: 200px;
+}
+.page-depart-list .charts {
+  text-align: center;
+}
+.page-depart-list .charts .chart {
+  width: 100%;
+  height: 200px;
+}
+.page-depart-list .charts h6 {
+  color: #4CC5CD;
+}
+.page-depart-list .panel-body {
+  height: inherit;
+  padding: 10px;
+}
+.page-depart-list .table {
+  border-spacing: 10px 10px;
+  border-top: medium none;
+}
+.page-depart-list .table thead {
+  font-size: 18px;
+}
+.page-depart-list .table tbody {
+  font-size: 16px;
+}
+.page-instance .charts {
+  text-align: center;
+}
+.page-instance .charts .chart {
+  width: 100%;
+  height: 240px;
+}
+.page-instance .instance-info .text-list {
+  padding: 0 1em;
+}
+.page-instance .instance-info .text-list .terques {
+  display: inline-block;
+  width: 6em;
+  text-align: left;
+  margin-right: 1em;
+  font-size: 14px;
+}
+.page-instance .panel-body {
+  height: inherit;
+}
+.page-instance .terques {
+  text-align: center;
+  color: #4CC5CD;
+}
+.page-instance .pie-foot {
+  padding: 2px;
+  border-radius: 0 0 4px 4px;
+  -webkit-border-radius: 0 0 4px 4px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 300;
+  height: 25px;
+}

@@ -1,0 +1,67 @@
+<section id="main-content" >
+  <section class="wrapper page page-user-list" data-page="userList">
+    <div class="row">
+      <div id="user-list" class="col-md-9">
+        <section class="panel">
+          <!-- <header class="panel-heading">
+              Responsive table
+          </header> -->
+          <div class="panel-body">
+            <div class="table-responsive">
+              <table id="user-list-table" class="display table table-bordered table-striped datatable">
+                <thead >
+                <tr>
+                  <th>用户名</th>
+                  <th class="numeric">工单数</th>
+                  <th class="numeric">当月主机数</th>
+                  <th class="numeric">当季主机数</th>
+                  <th class="numeric">当年主机数</th>
+                  <th class="numeric">总计主机数</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>-</td>
+                  <td class="numeric">-</td>
+                  <td class="numeric">-</td>
+                  <td class="numeric">-</td>
+                  <td class="numeric">-</td>
+                  <td class="numeric">-</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="col-md-3 charts">
+        <section class="panel">
+          <div class="chart" id="user-total_count"></div>
+          <h6>云主机创建数</h6>
+          <br>
+        </section>
+        <section class="panel">
+          <div class="chart" id="user-ticket_count"></div>
+          <h6>工单数</h6>
+          <br>
+        </section>
+        <!-- <div class="chart" id="user-average-CPU-chart"></div>
+              <h6>虚拟主机创建数</h6> -->
+      </div>
+    </div>
+  </section>
+
+  <script id="userListTemplate" type="text/template">
+    {{#users}}
+    <tr data-id="{{user_id}}" style="cursor:pointer;">
+      <td>{{user_name}}</td>
+      <td class="numeric">{{ticket_count}}</td>
+      <td class="numeric">{{month_count}}</td>
+      <td class="numeric">{{quarter_count}}</td>
+      <td class="numeric">{{year_count}}</td>
+      <td class="numeric">{{total_count}}</td>
+    </tr>
+    {{/users}}
+  </script>
+</section>

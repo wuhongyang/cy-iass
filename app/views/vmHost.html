@@ -1,0 +1,135 @@
+<section id="main-content" >
+    <section class="wrapper page page-host" data-page="vmHost">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="btn-group  button-next">
+                        <button class="btn btn-default refresh" name="year">一年</button>
+                        <button class="btn btn-default refresh" name="mon">一月</button>
+                        <button class="btn btn-default refresh" name="week">一周</button>
+                        <button class="btn btn-default refresh" name="day">一天</button>
+                        <button class="btn btn-default refresh" name="hour">一小时</button>
+                    </div>
+                </div>
+                <div class="row charts">
+                    <div class="col-md-4">
+                        <section class="panel">
+                            <div class="chart" id="host-cpu_usage" name="cpu_usage"></div>
+                            <footer class="pie-foot">平均CPU使用率</footer>
+                        </section>
+                    </div>
+                    <div class="col-md-4">
+                        <section class="panel">
+                            <div class="chart" id="host-mem_totalCapacity" name="mem_totalCapacity"></div>
+                            <footer class="pie-foot">平均内存总容量</footer>
+                        </section>
+                    </div>
+                    <div class="col-md-4">
+                        <section class="panel">
+                            <div class="chart" id="host-mem_usage" name="mem_usage"></div>
+                            <footer class="pie-foot">平均内存使用率</footer>
+                        </section>
+                    </div>
+                </div>
+                <div class="row charts">
+                    <div class="col-md-4">
+                        <section class="panel">
+                            <div class="chart" id="host-disk_total" name="disk_total"></div>
+                            <footer class="pie-foot">平均磁盘使用</footer>
+                        </section>
+                    </div>
+                    <div class="col-md-4">
+                        <section class="panel">
+                            <div class="chart" id="host-net_bytesRx" name="net_bytesRx"></div>
+                            <footer class="pie-foot">平均网络流量</footer>
+                        </section>
+                    </div>
+                    <div class="col-md-4">
+                        <section class="panel">
+                            <div class="chart" id="host-disk_read" name="disk_read"></div>
+                            <footer class="pie-foot">平均磁盘读写</footer>
+                        </section>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 ">
+                        <section class="panel">
+                            <!-- <header class="panel-heading">
+                                Responsive table
+                            </header> -->
+                            <div class="panel-body">
+                                <table id="host-instance-list-table" class="table table-bordered table-hover datatable">
+                                    <thead>
+                                    <tr>
+                                        <th>云主机名</th>
+                                        <th class="numeric">CPU</th>
+                                        <th class="numeric">内存</th>
+                                        <th class="numeric">状态</th>
+                                        <th class="numeric">启动时间</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody >
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <!--widget start-->
+                <section class="host-info panel" id="host-info">
+                </section>
+                <!--widget end-->
+                <!--widget start-->
+                <section class="host-info panel">
+                    <div class="panel-body host-quota-chart" id="host-quota">
+                    </div>
+                </section>
+                <!--widget end-->
+            </div>
+        </div>
+    </section>
+
+    <script id="hostInfoTemplate" type="text/template">
+        {{#host}}
+        <div class="twt-feed blue-bg">
+            <h1>{{host_name}}</h1>
+            <a href="#">
+                <img src="img/profile-avatar.jpg" alt=""></a>
+        </div>
+        <div class="twt-category">
+            <fieldset class="my-fieldset">
+                <legend>硬件</legend>
+            </fieldset>
+            <br>
+            <div  class="text-list">
+                <p><span class="terques">CPU :</span><small>{{cpu}}</small></p>
+                <p><span class="terques">内存 :</span><small>{{mem}}</small></p>
+                <p><span class="terques">运行状态 :</span><small>{{powerState}}</small></p>
+                <p><span class="terques">购买时间 :</span><small>{{created_at}}</small></p>
+                <p><span class="terques">上线时间 :</span><small>{{updated_at}}</small></p>
+            </div>
+            <fieldset class="my-fieldset">
+                <legend>软件</legend>
+            </fieldset>
+            <br>
+            <div  class="text-list">
+                <p><span class="terques">操作系统 :</span><small>{{fullName}} {{osType}}</small></p>
+                <p><span class="terques">启动时间 :</span><small>{{bootTime}}</small></p>
+                <p><span class="terques">虚拟化 :</span><small>{{licenseProductName}}{{licenseProductVersion}}</small></p>
+            </div>
+        {{/host}}
+    </script>
+    <script id="hostInstanceListTemplate" type="text/template">
+        {{#list}}
+        <tr style="cursor:pointer;" data-id="{{instance_name}}">
+            <td>{{instance_name}}</td>
+            <td class="numeric">{{cpu}}</td>
+            <td class="numeric">{{mem}}</td>
+            <td class="numeric">{{power_state}}</td>
+            <td class="numeric">{{up_time}}</td>
+        </tr>
+        {{/list}}
+    </script>
+</section>

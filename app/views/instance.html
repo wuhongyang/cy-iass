@@ -1,0 +1,110 @@
+
+<section id="main-content" >
+	<section class="wrapper page page-instance" data-page="instance">
+		<div class="row">
+			<div class="col-md-9">
+				<div class="row">
+					<div class="btn-group  button-next">
+						<button class="btn btn-default refresh" name="year">一年</button>
+						<button class="btn btn-default refresh" name="mon">一月</button>
+						<button class="btn btn-default refresh" name="week">一周</button>
+						<button class="btn btn-default refresh" name="day">一天</button>
+						<button class="btn btn-default refresh" name="hour">一小时</button>
+					</div>
+				</div>
+				<div class="row charts">
+					<div class="col-md-4">
+						<section class="panel">
+							<div class="chart" id="instance-cpu_usage" name="cpu_usage"></div>
+							<footer class="pie-foot">平均CPU使用率</footer>
+						</section>
+					</div>
+					<div class="col-md-4">
+						<section class="panel">
+							<div class="chart" id="instance-load_five" name="load_five"></div>
+							<footer class="pie-foot">平均负载值</footer>
+						</section>
+					</div>
+					<div class="col-md-4">
+						<section class="panel">
+							<div class="chart" id="instance-mem_total" name="mem_total"></div>
+							<footer class="pie-foot">平均内存使用</footer>
+						</section>
+					</div>
+				</div>
+				<div class="row charts">
+					<div class="col-md-4">
+						<section class="panel">
+							<div class="chart" id="instance-reads" name="reads"></div>
+							<footer class="pie-foot">平均磁盘读写</footer>
+						</section>
+					</div>
+					<div class="col-md-4">
+						<section class="panel">
+							<div class="chart" id="instance-bytes_in" name="bytes_in"></div>
+							<footer class="pie-foot">平均网络流量</footer>
+						</section>
+					</div>
+					<div class="col-md-4">
+						<section class="panel">
+							<div class="chart" id="instance-proc_run" name="proc_run"></div>
+							<footer class="pie-foot">平均活跃进程</footer>
+						</section>
+					</div>
+				</div>
+				<div class="row charts">
+					<div class="col-md-4">
+						<section class="panel">
+							<div class="chart" id="instance-disk_total" name="disk_total"></div>
+							<footer class="pie-foot">平均磁盘使用</footer>
+						</section>
+					</div>
+					<div class="col-md-4">
+						<section class="panel">
+							<div class="chart" id="instance-interrupts" name="interrupts"></div>
+							<footer class="pie-foot">平均中断数</footer>
+						</section>
+					</div>
+					<div class="col-md-4">
+						<section class="panel">
+							<div class="chart" id="instance-boottime" name="boottime"></div>
+							<footer class="pie-foot">平均启动时间</footer>
+						</section>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<!--widget start-->			
+				<section class="instance-info panel">
+					<div class="twt-feed blue-bg">
+						<h1>云主机信息</h1>
+					</div>
+					<div class="twt-category">
+						<div id="instance-info" class="text-list">
+						</div>
+					</div>
+				</section>
+				<!--widget end-->
+			</div>
+		</div>
+	</section>
+
+	<script id="instanceInfoTemplate" type="text/template">
+		{{#instance}}
+		<p><span class="terques">主机名 :</span><small>{{instance_name}}</small></p>
+		<p><span class="terques">CPU :</span><small>{{vcpus}}CPU X {{ecus_per_vcpu}} ECUS</small></p>
+		<p><span class="terques">内存 :</span><small>{{memory_mb}}MB</small></p>
+		<p><span class="terques">系统存储 :</span><small>{{rootfs_gb}}GB</small></p>
+		<p><span class="terques">用户存储 :</span><small>{{storage_gb}}GB</small></p>
+		<p><span class="terques">固定IP :</span><small>{{fixed_ip}}</small></p>
+		<p><span class="terques">浮动IP :</span><small>{{floating_ip}}</small></p>
+		<p><span class="terques">可用域 :</span><small>{{az}}</small></p>
+		<p><span class="terques">UUID :</span><small>{{uuid}}</small></p>
+		<p><span class="terques">镜像 :</span><small>{{os_type}}</small></p>
+		<p><span class="terques">创建时间 :</span><small>{{created_at}}</small></p>
+		<p><span class="terques">主机状态 :</span><small>{{vm_state}}</small></p>
+		<p><span class="terques">电源状态 :</span><small>{{power_state}}</small></p>
+		<p><span class="terques">虚拟化 :</span><small>KVM</small></p>
+		{{/instance}}
+	</script>
+</section>
